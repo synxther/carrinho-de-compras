@@ -17,7 +17,10 @@ void main() {
       if (text == "3") {
         condicao = false;
       } else if (text == "2") {
-        print("esse(s) são os os produtos: ${produtos}");
+        for (var i in produtos )  {
+          print("itens -- $i ");
+        }
+        // print("esse(s) são os os produtos: ${produtos}");
         print("deseja remover algum item?");
         String remover = stdin.readLineSync()!.toUpperCase();
         if (remover == "SIM" || remover == "S") {
@@ -25,7 +28,8 @@ void main() {
 
           produto = stdin.readLineSync()!;
           produtos.remove(produto);
-          print("produto removido com sucesso, deseja continuar comprando? Y/N");
+          print(
+              "produto removido com sucesso, deseja continuar comprando? Y/N");
         }
         text = stdin.readLineSync()!;
         if (text == "N") {
@@ -39,6 +43,6 @@ void main() {
   } else {
     print("programa finalizado");
     condicao = false;
-  } 
+  }
 }
 /// variável privada pois o pois o usuário n tem controle sobre as alterações do jogo 
