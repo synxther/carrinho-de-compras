@@ -38,6 +38,7 @@ void main() {
     }
   } else {
     print("programa finalizado");
-    bool condicao = false;
-  }
+    condicao = false;
+  } 
 }
+/// variável privada pois o pois o usuário n tem controle sobre as alterações do jogo 
