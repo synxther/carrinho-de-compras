@@ -5,21 +5,24 @@ void main() {
   print("deseja comprar alguma coisa?");
   String comprar = stdin.readLineSync()!.toUpperCase();
   bool condicao = true;
-  if (comprar == "SIM") {
+  if (comprar == "SIM" || comprar == "S") {
     while (condicao) {
       print("Qual produto?");
       String produto = stdin.readLineSync()!;
       produtos.add(produto);
       print("produtos adicionados:${produtos.length}");
 
-      print("[1]- continuar [2]- imprimir [3]-sair");
+      print("[1 or ENTER]- continuar [2]- imprimir [3]-sair");
       String text = stdin.readLineSync()!.toUpperCase();
       if (text == "3") {
         condicao = false;
       } else if (text == "2") {
-        for (var i in produtos )  {
-          print("itens -- $i ");
+        int numberPro = 0;
+        for (var i in produtos) {
+          print("item $numberPro --$i ");
+          numberPro++;
         }
+
         // print("esse(s) são os os produtos: ${produtos}");
         print("deseja remover algum item?");
         String remover = stdin.readLineSync()!.toUpperCase();
