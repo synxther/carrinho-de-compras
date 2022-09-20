@@ -61,3 +61,6 @@ remove(produtos, produto, text, remover) {
     condicao = false;
   }
 }
+
+
+/// houve uma troca da variável de forma local para global pois o remover não estava conseguindo usa-lá 
