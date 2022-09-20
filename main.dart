@@ -9,38 +9,14 @@ void main() {
     while (condicao) {
       print("Qual produto?");
       String produto = stdin.readLineSync()!;
-      produtos.add(produto);
-      print("produtos adicionados:${produtos.length}");
+      adicionar(produtos, produto);
 
-      print("[1 or ENTER]- continuar [2]- imprimir [3]-sair");
+      print("[1 or ENTER]- continuar [2]- imprimir/remover [3]-sair");
       String text = stdin.readLineSync()!.toUpperCase();
       if (text == "3") {
         condicao = false;
       } else if (text == "2") {
-        int numberPro = 0;
-        for (var i in produtos) {
-          print("item $numberPro --$i ");
-          numberPro++;
-        }
-
-        // print("esse(s) são os os produtos: ${produtos}");
-        print("deseja remover algum item?");
-        String remover = stdin.readLineSync()!.toUpperCase();
-        if (remover == "SIM" || remover == "S") {
-          print("qual produto?");
-
-          produto = stdin.readLineSync()!;
-          produtos.remove(produto);
-          print(
-              "produto removido com sucesso, deseja continuar comprando? Y/N");
-        }
-        text = stdin.readLineSync()!;
-        if (text == "N") {
-          condicao = false;
-          print("compra finalizada");
-        } else {
-          print("adicione novos produtos \n");
-        }
+        imprimir(produtos, produto, text, condicao);
       }
     }
   } else {
@@ -48,4 +24,41 @@ void main() {
     condicao = false;
   }
 }
-/// variável privada pois o pois o usuário n tem controle sobre as alterações do jogo 
+
+/// variável privada pois o pois o usuário n tem controle sobre as alterações do jogo
+
+adicionar(produtos, produto) {
+  produtos.add(produto);
+  print("produtos adicionados:${produtos.length}");
+}
+
+imprimir(produtos, produto, text, condicao) {
+  int numberPro = 1;
+  for (var i in produtos) {
+    print("item $numberPro --$i ");
+    numberPro++;
+  }
+
+  // print("esse(s) são os os produtos: ${produtos}");
+  print("deseja remover algum item?");
+  String remover = stdin.readLineSync()!.toUpperCase();
+  remove(produtos, produto, text, remover, condicao);
+}
+
+remove(produtos, produto, text, remover, condicao) {
+  if (remover == "SIM" || remover == "S") {
+    print("qual produto?");
+
+    produto = stdin.readLineSync()!;
+    produtos.remove(produto);
+    print("produto removido com sucesso, deseja continuar comprando? Y/N");
+  }
+  print("deseja continuar comprando? Y/N");
+  text = stdin.readLineSync()!;
+  if (text == "Y") {
+    print("adicione novos produtos \n");
+    adicionar(produtos, produto);
+  } else {
+    condicao = false;
+  }
+}
